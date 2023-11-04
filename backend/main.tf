@@ -7,6 +7,16 @@ terraform {
   }
 }
 
+terraform {
+  backend "azurerm" {
+    resource_group_name  = "rgkh-backend-tfstate"
+    storage_account_name = "sakhbatfst39m9pgwez"
+    container_name       = "sckhbatfstate" # kan ikke settes til variabel, må være hardkodet
+    key                  = "backend.terraform.tfstate"
+  }
+}
+
+
 provider "azurerm" {
   features {
     key_vault {
