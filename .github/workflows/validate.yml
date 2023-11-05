@@ -39,6 +39,13 @@ jobs:
         run: terraform init
         working-directory: ${{ env.WORKING_DIR }}          
 
+    # Format config file
+      - name: Terraform fmt
+        id: fmt
+        run: terraform fmt
+        working-directory: ${{ env.WORKING_DIR }} 
+
+    # validates code
       - name: Terraform validate
         id: validate
         run: terraform validate
