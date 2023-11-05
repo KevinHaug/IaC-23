@@ -9,6 +9,11 @@ locals {
 resource "azurerm_resource_group" "rg-infra" {
   name     = local.rg_name
   location = var.location
+
+   tags = {
+    Workspace = terraform.workspace
+  }
+
 }
 
 resource "random_string" "random_string" {
