@@ -1,6 +1,13 @@
+locals {
+  workspaces_suffix = terraform.workspace == "default" ? "" : "${terraform.workspace}"
+
+  rg_name = "${var.rg_name}-${local.workspaces_suffix}"
+}
+
+
 # Resource Group for all resources
 resource "azurerm_resource_group" "rg-infra" {
-  name     = "${var.rg_name}-${var.base_name}"
+  name     = local.rg_name
   location = var.location
 }
 
